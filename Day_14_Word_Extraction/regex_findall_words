@@ -1,0 +1,37 @@
+# Project: Day 14  Word-Based Emotion Detection
+# Concept: re.findall()--for Word Extraction--, tokenization with regex
+
+import re
+
+emotion_words = {
+    "happy": 2,
+    "sad": -2,
+    "angry": -3,
+    "excited": 3,
+    "love": 3,
+    "hate": -3
+}
+
+text = input("How are you feeling today? ").lower()
+
+words = re.findall(r"\w+", text)  # Extract words using regex
+score = 0
+
+for word in words:
+    if word in emotion_words:
+        score += emotion_words[word]
+
+if score > 1:
+    print("Mood is positive 😊")
+elif score < -1:
+    print("Mood is negative 😔")
+else:
+    print("Mood is neutral 😐")
+
+print("Emotion score:", score)
+
+"""
+New Concepts Learned:
+1. re.findall(): extract words matching a pattern.
+2. \w+ → matches letters/numbers in words.
+"""

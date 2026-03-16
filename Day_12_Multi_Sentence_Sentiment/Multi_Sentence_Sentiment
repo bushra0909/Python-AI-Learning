@@ -1,0 +1,45 @@
+# Project: Day 12 - Rule-Based Sentiment Analysis for Multiple Sentences
+# Concept: Looping through sentences, scoring each
+
+import string
+
+weights = {
+    "happy": 1,
+    "very happy": 2,
+    "sad": -1,
+    "very sad": -2
+}
+
+paragraph = input("Enter sentences: ")
+sentences = paragraph.split(".")  # split by sentence
+
+for sentence in sentences:
+    sentence = sentence.strip()
+    if sentence == "":
+        continue
+    sentence = sentence.lower()
+    sentence = sentence.translate(str.maketrans("", "", string.punctuation))
+    words = sentence.split()
+    sentence_score = 0
+
+    # Bi-grams
+    for i in range(len(words)-1):
+        phrase = words[i] + " " + words[i+1]
+        print("Checking phrase:", phrase)
+        if phrase in weights:
+            sentence_score += weights[phrase]
+
+    # Single words
+    for word in words:
+        if word in weights:
+            sentence_score += weights[word]
+
+    print("Sentence:", sentence)
+    print("Sentence Score:", sentence_score)
+    print()
+
+"""
+New Concepts Learned:
+1. Looping through multiple sentences.
+2. Combining bi-gram + word scoring for paragraphs.
+"""

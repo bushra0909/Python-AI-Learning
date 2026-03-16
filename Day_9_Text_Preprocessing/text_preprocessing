@@ -1,0 +1,24 @@
+# Project: Day 9 - Text Preprocessing for AI
+# Concept: Lowercase, remove punctuation, tokenization
+
+import string
+
+def preprocess(user_data):
+    txt = user_data.lower()  # Step 1: lowercase
+
+    for p in string.punctuation:  # Step 2: remove punctuation
+        txt = txt.replace(p, "")
+
+    words = txt.split()  # Step 3: tokenization
+    return words
+
+sentence = "I am VERY happy!!!"
+clean_words = preprocess(sentence)
+print(clean_words)
+
+"""
+New Concepts Learned:
+1. Text Cleaning: Lowercasing and punctuation removal.
+2. Tokenization: Splitting text into words for AI processing.
+3. strings are immutable → methods return new strings.
+"""

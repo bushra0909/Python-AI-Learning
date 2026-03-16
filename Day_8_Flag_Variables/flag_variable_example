@@ -1,0 +1,30 @@
+# Project: Day 8 - Flag Variable for Emotion Detection
+# Concept: Flag variable to control else printing, dictionary lookup
+
+def my_emotion():
+    mood_dict = {
+        "happy": "Happy",
+        "sad": "Sad",
+        "angry": "Angry"
+    }
+
+    text = "i am upset"
+    words = text.lower().split()
+    found = False  # Step 1: Flag variable
+
+    for word in words:
+        if word in mood_dict:
+            print("Found:", mood_dict[word])
+            found = True  # Set flag to True if found
+
+    # Step 2: Print if not found, only once
+    if not found:
+        print("WORD NOT FOUND!")
+
+my_emotion()
+
+"""
+New Concepts Learned:
+1. Flag Variable: Control flow, print else only once.
+2. Dictionary Lookup for word mapping.
+"""

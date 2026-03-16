@@ -1,0 +1,38 @@
+# Project: Day 13 - Regular Expressions (re module)
+# Concept: re.split() for sentence splitting
+
+import re
+
+user_tt = input("Enter text: ")
+sentences = re.split(r"[.!]", user_tt)  # split by . or !
+print(sentences)
+
+emotion_words = {
+    "happy": 2,
+    "sad": -2,
+    "very happy": 3,
+    "very sad": -3
+}
+
+text = input("Enter how you are feeling: ").lower()
+sntn = re.split(r"[.!]", text)
+score = 0
+
+for word in sntn:
+    if word in emotion_words:
+        score += emotion_words[word]
+
+if score > 1:
+    print("Mood is positive")
+elif score < -1:
+    print("Mood is negative")
+else:
+    print("Neutral mood")
+
+print("Overall mood score:", score)
+
+"""
+New Concepts Learned:
+1. Regular Expressions (re module).
+2. re.split(): split text using patterns like "." or "!".
+"""

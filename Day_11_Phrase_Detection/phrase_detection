@@ -1,0 +1,45 @@
+# Project: Day 11 - Phrase Detection (Bi-grams)
+
+import string
+
+# Step 1: Take user input
+user_text = input("Enter your text: ").lower()
+
+# Step 2: Clean punctuation
+user_text = user_text.translate(str.maketrans("", "", string.punctuation))
+
+# Step 3: Tokenize into words
+text_word = user_text.split()
+
+# Step 4: Define emotion weights
+weights = {
+    "happy": 1,
+    "very happy": 2,
+    "sad": -1,
+    "very sad": -2
+}
+
+score = 0
+
+# Step 5: Check for two-word phrases (bi-grams)
+for i in range(len(text_word)-1):
+    phrase = text_word[i] + " " + text_word[i+1]
+    print("Checking phrase:", phrase)  # Debugging
+    if phrase in weights:
+        score += weights[phrase]
+
+# Step 6: Check for single words
+for word in text_word:
+    if word in weights:
+        score += weights[word]
+
+# Step 7: Print results
+print("Emotion Score:", score)
+
+if score > 0:
+    print("Overall Mood: Positive")
+elif score < 0:
+    print("Overall Mood: Negative")
+else:
+    print("Overall Mood: Neutral")
+

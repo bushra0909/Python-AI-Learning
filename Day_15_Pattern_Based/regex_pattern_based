@@ -1,0 +1,41 @@
+# Project: Day 15 - Pattern-Based Emotion Detection
+# Concept: re.search(), removing matched phrases to prevent double counting
+
+import re
+
+emotion_patterns = {
+    r"extremely\s+happy": 6,
+    r"very\s+happy": 4,
+    r"happy": 2,
+    r"sad": -2
+}
+
+ttx = input("How are you feeling buddy?: ").lower()
+score = 0
+
+# Remove punctuation
+ttx = re.sub(r"[.,!?]", "", ttx)
+
+for pattern in emotion_patterns:
+    if re.search(pattern, ttx):
+        print("Matched:", pattern)
+        score += emotion_patterns[pattern]
+        # Remove matched phrase to prevent counting again
+        ttx = re.sub(pattern, "", ttx)
+
+print("Remaining text:", ttx)
+print("Emotion score:", score)
+
+if score > 0:
+    print("Overall mood: Positive")
+elif score < 0:
+    print("Overall mood: Negative")
+else:
+    print("Overall mood: Neutral")
+
+"""
+New Concepts Learned:
+1. re.search(): check if a pattern exists.
+2. re.sub(): replace matched pattern (remove double counting).
+3. r"..." → raw string for regex patterns.
+"""

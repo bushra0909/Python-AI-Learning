@@ -1,0 +1,44 @@
+# Project: Day 10 - Weighted Mood Scoring
+# Concept: Multi-word phrases, word weights
+
+import string
+
+user_text = input("Enter input: ").lower()
+user_text = user_text.translate(str.maketrans("", "", string.punctuation))  # remove punctuation
+
+text_words = user_text.split()
+
+weights = {
+    "happy": 1,
+    "very happy": 2,
+    "sad": -1,
+    "very sad": -2
+}
+
+score = 0
+
+# Check two-word phrases
+for i in range(len(text_words)-1):
+    phrase = text_words[i] + " " + text_words[i+1]
+    if phrase in weights:
+        score += weights[phrase]
+
+# Check single words
+for word in text_words:
+    if word in weights:
+        score += weights[word]
+
+print("Emotion Score:", score)
+
+if score > 0:
+    print("Overall Mood: Positive")
+elif score < 0:
+    print("Overall Mood: Negative")
+else:
+    print("Overall Mood: Neutral")
+
+"""
+New Concepts Learned:
+1. Weighted Scoring: Words and phrases have different impact.
+2. Phrase Detection (Bi-grams).
+"""
