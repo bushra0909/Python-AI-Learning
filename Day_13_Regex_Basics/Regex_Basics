@@ -5,6 +5,8 @@ import re
 
 user_tt = input("Enter text: ")
 sentences = re.split(r"[.!]", user_tt)  # split by . or !
+##Yes, in regex if we write r"\W+ in split function": here \W = non-word character (spaces, punctuation, symbols)
+#in regex if we write r"\w+ in split function here \w = word character (letters, digits, underscore)
 print(sentences)
 
 emotion_words = {
