@@ -1,4 +1,4 @@
-# Project: Day 5 - Functions & Simple Mood Detection
+# Project: Day 1 - Functions & Simple Mood Detection
 # Concept: Functions, Local Variables, and Dictionary Counting
 
 # Step 1: Create dictionary to store moods
