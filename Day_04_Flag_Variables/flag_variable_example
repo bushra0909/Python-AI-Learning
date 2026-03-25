@@ -1,4 +1,4 @@
-# Project: Day 8 - Flag Variable for Emotion Detection
+# Project: Day 4 - Flag Variable for Emotion Detection
 # Concept: Flag variable to control else printing, dictionary lookup
 
 def my_emotion():
