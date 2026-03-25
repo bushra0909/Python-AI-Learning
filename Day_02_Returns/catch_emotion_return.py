@@ -1,4 +1,4 @@
-# Project: Day 6 - Functions with Return Values
+# Project: Day 2 - Functions with Return Values
 # Concept: Functions, return statements, nested loops, list lookup
 
 def catch_emotion():
