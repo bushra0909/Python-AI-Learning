@@ -1,4 +1,4 @@
-# Project: Day 9 - Text Preprocessing for AI
+# Project: Day 5- Text Preprocessing for AI
 # Concept: Lowercase, remove punctuation, tokenization
 
 import string
