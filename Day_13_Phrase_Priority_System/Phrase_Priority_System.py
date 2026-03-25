@@ -1,4 +1,4 @@
-# Project: Day 17 - Phrase Priority System in NLP Emotion Detection Upgrade
+# Project: Day 13 - Phrase Priority System in NLP Emotion Detection Upgrade
 # Concepts:
 # - Tokenization (NLTK)
 # - Phrase detection (priority-wise)
