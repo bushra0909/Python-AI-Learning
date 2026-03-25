@@ -1,4 +1,4 @@
-# Project: Day 13 - Regular Expressions (re module)
+# Project: Day 9 - Regular Expressions (re module)
 # Concept: re.split() for sentence splitting
 
 import re
