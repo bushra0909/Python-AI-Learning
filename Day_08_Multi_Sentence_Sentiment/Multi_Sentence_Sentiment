@@ -1,4 +1,4 @@
-# Project: Day 12 - Rule-Based Sentiment Analysis for Multiple Sentences
+# Project: Day 8 - Rule-Based Sentiment Analysis for Multiple Sentences
 # Concept: Looping through sentences, scoring each
 
 import string
