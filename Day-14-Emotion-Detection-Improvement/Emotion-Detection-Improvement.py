@@ -13,10 +13,15 @@
 # Multi-word phrases (HIGH priority)
 phrase_dict = {
     "very happy": 4,
+    "very sad" :-4,
     "extremely happy": 6,
+    "extremely sad" :-6,
     "not happy": -2,
+    "not sad": 2,
     "not very happy": -4,
-    "not extremely happy": -6
+    "not very sad": 4,
+    "not extremely happy": -6,
+    "not extremely sad": 6
 }
 
 word_dict = {
