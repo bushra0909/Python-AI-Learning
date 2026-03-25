@@ -1,4 +1,4 @@
-# Project: Day 18 - Emotion Detection Improvement
+# Project: Day 14 - Emotion Detection Improvement
 # Concepts:
 # - Tokenization (NLTK)
 # - Phrase detection (priority first)
