@@ -1,4 +1,4 @@
-# Project: Day 14  Word-Based Emotion Detection
+# Project: Day 10  Word-Based Emotion Detection
 # Concept: re.findall()--for Word Extraction--, tokenization with regex
 
 import re
