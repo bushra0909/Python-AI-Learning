@@ -1,4 +1,4 @@
-# Project: Day 15 - Pattern-Based Emotion Detection
+# Project: Day 11 - Pattern-Based Emotion Detection
 # Concept: re.search(), removing matched phrases to prevent double counting
 
 import re
