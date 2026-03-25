@@ -1,4 +1,4 @@
-# Project: Day 7 - Returning Multiple Values from Function
+# Project: Day 3 - Returning Multiple Values from Function
 # Concept: Tuple packing & unpacking, comparing counts
 
 def add_and_multiply(a, b):
