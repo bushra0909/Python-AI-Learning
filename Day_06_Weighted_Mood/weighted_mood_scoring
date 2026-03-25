@@ -1,4 +1,4 @@
-# Project: Day 10 - Weighted Mood Scoring
+# Project: Day 6 - Weighted Mood Scoring
 # Concept: Multi-word phrases, word weights
 
 import string
