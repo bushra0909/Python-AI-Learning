@@ -1,4 +1,4 @@
-# Project: Day 16 - Negation Handling in Emotion Detection
+# Project: Day 12- Negation Handling in Emotion Detection
 # New Concept: Negation words reverse the sentiment score
 
 import re
