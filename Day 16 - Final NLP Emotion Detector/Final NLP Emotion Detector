@@ -1,0 +1,128 @@
+# Day 16 - Final NLP Emotion Detector
+# -----------------------------------
+# Features:
+# ✔ Sentence-wise emotion detection
+# ✔ Phrase priority (multi-word phrases first)
+# ✔ Negation handling (not happy → negative)
+# ✔ Avoid double counting of words
+# ✔ Paragraph-level final mood
+
+import nltk
+from nltk.tokenize import sent_tokenize, word_tokenize
+
+# Download once (uncomment only the first time you run)
+# nltk.download('punkt')
+
+# Emotion dictionary
+# Multi-word phrases are included for higher priority detection
+emotion_dict = {
+    "very happy": 3,
+    "very sad": -3,
+    "not happy": -2,
+    "not sad": 2,
+    "happy": 2,
+    "sad": -2,
+    "angry": -3,
+    "excited": 3,
+    "tired": -1,
+    "bored": -1
+}
+
+# Set of negation words
+negations = {"no", "never", "not"}
+
+# Function to convert score into mood label
+def get_mood(score):
+    if score > 1:
+        return "Positive 😊"
+    elif score < -1:
+        return "Negative 😢"
+    else:
+        return "Neutral 😐"
+
+# Take paragraph input from user
+text = input("Enter your paragraph:\n")
+
+# Step 1: Split paragraph into sentences
+sentences = sent_tokenize(text)
+
+# Variable to store total score of entire paragraph
+total_score = 0
+
+print("\n--- Analysis ---\n")
+
+# Step 2: Process each sentence one by one
+for sentence in sentences:
+    
+    # Convert sentence to lowercase and tokenize into words
+    words = word_tokenize(sentence.lower())
+    
+    # Set to track already used words (to avoid double counting)
+    used_words = set()
+    
+    # Score for current sentence
+    score = 0
+
+    print(f"Sentence: {sentence}")
+
+    # Step 3: Detect multi-word phrases first (higher priority)
+    for phrase in emotion_dict:
+        if " " in phrase and phrase in sentence.lower():
+            
+            # Add phrase score
+            score += emotion_dict[phrase]
+            
+            # Mark words in phrase as used
+            used_words.update(phrase.split())
+            
+            print(f"  Phrase detected: {phrase} ({emotion_dict[phrase]})")
+
+    # Step 4: Detect single words + handle negation
+    i = 0
+    while i < len(words):
+        word = words[i]
+
+        # Skip word if already used in phrase
+        if word in used_words:
+            i += 1
+            continue
+
+        # Check if current word is a negation word
+        if word in negations and i + 1 < len(words):
+            next_word = words[i + 1]
+
+            # If next word is an emotion word → flip its score
+            if next_word in emotion_dict:
+                negated_score = -emotion_dict[next_word]
+                score += negated_score
+                
+                print(f"  Negation detected: {word} {next_word} ({negated_score})")
+                
+                # Mark next word as used
+                used_words.add(next_word)
+                
+                # Skip next word since it's already processed
+                i += 2
+                continue
+
+        # Normal emotion word detection (no negation)
+        if word in emotion_dict:
+            score += emotion_dict[word]
+            print(f"  Word detected: {word} ({emotion_dict[word]})")
+
+        # Move to next word
+        i += 1
+
+    # Step 5: Determine mood for current sentence
+    mood = get_mood(score)
+    
+    # Add sentence score to total paragraph score
+    total_score += score
+
+    print(f"  Sentence Score: {score}")
+    print(f"  Sentence Mood: {mood}\n")
+
+# Step 6: Final paragraph-level result
+print("--- Final Result ---")
+print(f"Total Score: {total_score}")
+print(f"Overall Mood: {get_mood(total_score)}")
